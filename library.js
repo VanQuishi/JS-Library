@@ -19,15 +19,38 @@ function displayBook(book) {
   console.log('hi');
   var bookItem = document.createElement('div');
   bookItem.classList.add('bookItem');
-  var bookCard = document.createElement('div')
-  bookCard.classList.add('bookCard');
-  var bookTitle = document.createElement('div');
 
+  var bookCard = document.createElement('div');
+  bookCard.classList.add('bookCard');
+
+  var author = document.createElement('div');
+  author.innerHTML = "Author: " + book.author;
+
+  var pages = document.createElement('div');
+  pages.innerHTML = "Pages: " + book.pages;
+
+  var addedDate = document.createElement('div');
+  addedDate.innerHTML = "Added Date: " + book.addedDate;
+
+  var isRead = document.createElement('div');
+  if (book.isRead == true) {
+    isRead.innerHTML = "Completed!";
+  } else {
+    isRead.innerHTML = "In Progress...";
+  }
+  
+  bookCard.appendChild(author);
+  bookCard.appendChild(pages);
+  bookCard.appendChild(addedDate);
+  bookCard.appendChild(isRead);
+
+  var bookTitle = document.createElement('div');
   bookTitle.innerHTML = book.title;
 
-  bookShelf.appendChild(bookItem);
   bookItem.appendChild(bookCard);
   bookItem.appendChild(bookTitle);
+  bookShelf.appendChild(bookItem);
+ 
 }
 
 //hardcoded books for testing
@@ -38,3 +61,5 @@ const b3 = new Book('How to Swing Trade', 'Brian Pezim' , 322, '2021-10-26', tru
 //myLibrary = [b1, b2, b3];
 
 displayBook(b1);
+displayBook(b2);
+displayBook(b3);

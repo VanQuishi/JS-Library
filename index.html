@@ -17,11 +17,52 @@
     </ul>
   </div>
   
-  <div id="contentContainer">
+  <div class="contentContainer">
     <div id="bookShelf">
       
     </div>  
+    
+    
     <!-- <button>+</button> -->
+  </div>
+  <div class="contentContainer" id="formContainer">
+    <div class="form">
+      <div class="form-header"><b>Add New Book</b></div>
+      <div class="form-body">
+        <div class="input-group">
+          <label for="">Title</label>
+          <input type="text">
+        </div>
+        <div class="input-group">
+          <label>Author</label>
+          <input type="text">
+        </div>
+        <div class="input-group">
+          <label>Pages</label>
+          <input type="number">
+        </div>
+        <div class="input-group">
+          <label>Added Date</label>
+          <input type="date">
+        </div>
+        <div id="isReadQuestion">
+          <label>Have you read this book?</label>
+          <div class="input-radio-group">  
+            <div class="input-radio">
+              <input type="radio" name="isReadRadios">
+              <label for="">Yes</label>
+            </div>        
+            <div class="input-radio">
+              <input type="radio" name="isReadRadios">
+              <label for="">No</label>
+            </div>
+          </div>         
+        </div>
+      </div>
+      <div class="input-footer">
+        <button id="addBookBtn">Add</button>
+      </div>
+    </div>
   </div>
 
   <div class="footer">

@@ -60,6 +60,6 @@ const b3 = new Book('How to Swing Trade', 'Brian Pezim' , 322, '2021-10-26', tru
 
 //myLibrary = [b1, b2, b3];
 
-displayBook(b1);
-displayBook(b2);
-displayBook(b3);
+// displayBook(b1);
+// displayBook(b2);
+// displayBook(b3);

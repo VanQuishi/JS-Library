@@ -30,37 +30,37 @@
       <div class="form-header"><b>Add New Book</b></div>
       <div class="form-body">
         <div class="input-group">
-          <label for="">Title</label>
-          <input type="text">
+          <label for="title">Title</label>
+          <input type="text" id="title">
         </div>
         <div class="input-group">
-          <label>Author</label>
-          <input type="text">
+          <label for="author">Author</label>
+          <input type="text" id="author">
         </div>
         <div class="input-group">
-          <label>Pages</label>
-          <input type="number">
+          <label for="pages">Pages</label>
+          <input type="number" min="1" id="pages">
         </div>
         <div class="input-group">
-          <label>Added Date</label>
-          <input type="date">
+          <label for="addedDate">Added Date</label>
+          <input type="date" id="addedDate">
         </div>
         <div id="isReadQuestion">
           <label>Have you read this book?</label>
           <div class="input-radio-group">  
             <div class="input-radio">
-              <input type="radio" name="isReadRadios">
-              <label for="">Yes</label>
+              <input type="radio" name="isReadRadios" id="yesOption">
+              <label for="yesOption">Yes</label>
             </div>        
             <div class="input-radio">
-              <input type="radio" name="isReadRadios">
-              <label for="">No</label>
+              <input type="radio" name="isReadRadios" id="noOption">
+              <label for="noOption">No</label>
             </div>
           </div>         
         </div>
       </div>
       <div class="input-footer">
-        <button id="addBookBtn">Add</button>
+        <button id="addBookBtn" onclick="getInfoFromBookForm()">Add</button>
       </div>
     </div>
   </div>

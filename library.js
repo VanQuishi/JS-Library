@@ -33,11 +33,13 @@ function displayBook(book) {
   addedDate.innerHTML = "Added Date: " + book.addedDate;
 
   var isRead = document.createElement('div');
-  if (book.isRead == true) {
-    isRead.innerHTML = "Completed!";
-  } else {
-    isRead.innerHTML = "In Progress...";
-  }
+  // if (book.isRead == true) {
+  //   isRead.innerHTML = "Completed!";
+  // } else {
+  //   isRead.innerHTML = "In Progress...";
+  // }
+
+  isRead.innerHTML = (book.isRead) ? "Completed!" : "In Progress...";
   
   bookCard.appendChild(author);
   bookCard.appendChild(pages);
@@ -53,10 +55,27 @@ function displayBook(book) {
  
 }
 
+function getInfoFromBookForm() {
+  var title = document.getElementById('title').value;
+  var author = document.getElementById('author').value;
+  var pages = document.getElementById('pages').value;
+  var addedDate = document.getElementById('addedDate').value;
+  var isRead = (document.getElementById('yesOption').checked) ? true : false;
+
+  addBookToLibrary(title, author, pages, addedDate, isRead);
+
+  document.getElementById('title').value = '';
+  document.getElementById('author').value = '';
+  document.getElementById('pages').value = '';
+  document.getElementById('addedDate').value = '';
+  document.getElementById('yesOption').checked = false;
+  document.getElementById('noOption').checked = false;
+}
+
 //hardcoded books for testing
-const b1 = new Book('Harry Porter', 'J.K. Rowling', 4167, '2021-10-24', true);
-const b2 = new Book('Olympus Heroes', 'Rick Riordan', 3088, '2021-10-25', false);
-const b3 = new Book('How to Swing Trade', 'Brian Pezim' , 322, '2021-10-26', true);
+// const b1 = new Book('Harry Porter', 'J.K. Rowling', 4167, '2021-10-24', true);
+// const b2 = new Book('Olympus Heroes', 'Rick Riordan', 3088, '2021-10-25', false);
+// const b3 = new Book('How to Swing Trade', 'Brian Pezim' , 322, '2021-10-26', true);
 
 //myLibrary = [b1, b2, b3];
 

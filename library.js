@@ -72,6 +72,10 @@ function getInfoFromBookForm() {
   document.getElementById('noOption').checked = false;
 }
 
+function openForm() {
+  document.getElementById('formContainer').style.display = "";
+}
+
 //hardcoded books for testing
 const b1 = new Book('Harry Porter', 'J.K. Rowling', 4167, '2021-10-24', true);
 const b2 = new Book('Olympus Heroes', 'Rick Riordan', 3088, '2021-10-25', false);

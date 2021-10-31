@@ -73,12 +73,12 @@ function getInfoFromBookForm() {
 }
 
 //hardcoded books for testing
-// const b1 = new Book('Harry Porter', 'J.K. Rowling', 4167, '2021-10-24', true);
-// const b2 = new Book('Olympus Heroes', 'Rick Riordan', 3088, '2021-10-25', false);
-// const b3 = new Book('How to Swing Trade', 'Brian Pezim' , 322, '2021-10-26', true);
+const b1 = new Book('Harry Porter', 'J.K. Rowling', 4167, '2021-10-24', true);
+const b2 = new Book('Olympus Heroes', 'Rick Riordan', 3088, '2021-10-25', false);
+const b3 = new Book('How to Swing Trade', 'Brian Pezim' , 322, '2021-10-26', true);
 
 //myLibrary = [b1, b2, b3];
 
-// displayBook(b1);
-// displayBook(b2);
-// displayBook(b3);
+displayBook(b1);
+displayBook(b2);
+displayBook(b3);

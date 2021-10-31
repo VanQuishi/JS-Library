@@ -8,6 +8,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   overflow-y: auto;
+  position: relative;
 }
 
 .header, .footer {
@@ -38,6 +39,10 @@ a {
   flex: 1;
   padding: 100px;
   color: #1F2937;
+}
+
+#bookContainer {
+  position: absolute;
 }
 
 #bookShelf {
@@ -133,6 +138,7 @@ a {
 #formContainer {
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 /* footer style */
 .footer {

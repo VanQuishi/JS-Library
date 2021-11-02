@@ -80,11 +80,13 @@ a {
   padding: 20px;
   gap: 20px;
   border-radius: 5px;
+  background-color: #ffffff;
 }
 
 .form-header {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  gap: 70px;
 }
 
 /* .form-body { 
@@ -139,7 +141,31 @@ a {
   justify-content: center;
   align-items: center;
   z-index: 2;
+  background-color: rgba(31, 41, 55, 0.7);
 }
+
+#openFormDiv{
+  position: absolute;
+  bottom: 15%;
+  right: 5%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+
+#openFormDiv button {
+  width: 32px;
+  height: 32px;
+  padding: 20px;
+  border-radius: 50%;
+  font-size: 20px;
+  border: 2px solid #3882F6;
+  color: #f8faff;
+  background-color: #3882F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* footer style */
 .footer {
   justify-content: center;

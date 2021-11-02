@@ -70,10 +70,15 @@ function getInfoFromBookForm() {
   document.getElementById('addedDate').value = '';
   document.getElementById('yesOption').checked = false;
   document.getElementById('noOption').checked = false;
+  document.getElementById('formContainer').style.display = "none";
 }
 
 function openForm() {
   document.getElementById('formContainer').style.display = "";
+}
+
+function closeForm() {
+  document.getElementById('formContainer').style.display = "none";
 }
 
 //hardcoded books for testing

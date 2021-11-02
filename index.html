@@ -13,7 +13,7 @@
     <div>Digital Library</div>
     <ul>
       <li><a href="index.html">Your Books</a></li>
-      <li><a href="#">New Book</a></li>
+      <li onclick="openForm()" style="cursor: pointer;">New Book</li>
     </ul>
   </div>
   
@@ -27,7 +27,10 @@
   </div>
   <div class="contentContainer" id="formContainer" style="display: none;">
     <div class="form">
-      <div class="form-header"><b>Add New Book</b></div>
+      <div class="form-header">
+        <div><b>Add New Book</b></div>
+        <div onclick="closeForm();" style="cursor: pointer;">✖</div> 
+      </div>
       <div class="form-body">
         <div class="input-group">
           <label for="title">Title</label>
@@ -64,8 +67,8 @@
       </div>
     </div>
   </div>
-  <div style="position: absolute; bottom: 15%; right: 5%;">
-    <button onclick="openForm()">+</button>
+  <div id="openFormDiv">
+    <button onclick="openForm();" style="cursor: pointer;">+</button>
   </div> 
   <div class="footer">
     <div>Created by Nin ❤</div>

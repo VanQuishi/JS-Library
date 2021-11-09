@@ -166,6 +166,21 @@ a {
   justify-content: center;
 }
 
+.removeBtn {
+  background-color: white;
+  color: #1F2937;
+  padding: 10px;
+  border: solid 1px #F54552;
+  border-radius: 2px;
+}
+
+.removeBtn:hover {
+  background-color: #F54552;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
 /* footer style */
 .footer {
   justify-content: center;

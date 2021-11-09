@@ -1,18 +1,29 @@
 const bookShelf = document.getElementById('bookShelf');
 let myLibrary = [];
 
-function Book(title, author, pages, addedDate, isRead) {
+function Book(title, author, pages, addedDate, isRead, index) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.addedDate = addedDate;
   this.isRead = isRead;
+  this.index = index;
 } 
 
 function addBookToLibrary(title, author, pages, addedDate, isRead) {
-  var book = new Book(title, author, pages, addedDate, isRead);
+  var index = myLibrary.length;
+  var book = new Book(title, author, pages, addedDate, isRead, index);
   myLibrary.push(book);
-  displayBook(book);
+
+  //displayBook(book);
+  populateStorage();
+}
+
+function removeBook(index) {
+  console.log(index);
+  console.log(myLibrary);
+  myLibrary.splice(index, 1);
+  console.log(myLibrary);
   populateStorage();
 }
 
@@ -44,10 +55,16 @@ function displayBook(book) {
   var bookTitle = document.createElement('div');
   bookTitle.innerHTML = book.title;
 
+  var removeBtn = document.createElement('button');
+  removeBtn.innerHTML = "Remove";
+  removeBtn.classList.add('removeBtn');
+  removeBtn.setAttribute('data-index', book.index);
+  removeBtn.setAttribute('onclick', 'removeBook(this.dataset.index);');
+
   bookItem.appendChild(bookCard);
   bookItem.appendChild(bookTitle);
+  bookItem.appendChild(removeBtn);
   bookShelf.appendChild(bookItem);
- 
 }
 
 function getInfoFromBookForm() {
@@ -76,6 +93,23 @@ function closeForm() {
   document.getElementById('formContainer').style.display = "none";
 }
 
+function populateStorage() {
+  localStorage.setItem('myLocalLibrary', JSON.stringify(myLibrary));
+}
+
+function displayLibrary() {
+  var existingLib = JSON.parse(localStorage.getItem("myLocalLibrary"));
+  console.log("existingLib", existingLib);
+
+  existingLib.forEach(function(item) { 
+    addBookToLibrary(item['title'], item['author'], item['pages'], item['addedDate'], item['isRead']);
+  });
+
+  myLibrary.forEach(function(book) {
+    displayBook(book);
+  })
+}
+
 if(!localStorage.getItem('myLibrary')) {
   populateStorage();
   displayLibrary();
@@ -83,23 +117,10 @@ if(!localStorage.getItem('myLibrary')) {
   displayLibrary();
 }
 
-function populateStorage() {
-  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
-}
-
-function displayLibrary() {
-  var existingLib = JSON.parse(localStorage.getItem("myLibrary"));
-  console.log("existingLib", existingLib);
-
-  existingLib.forEach(function(item) { 
-    addBookToLibrary(item['title'], item['author'], item['pages'], item['addedDate'], item['isRead']);
-  });
-}
-
 //hardcoded books for testing
-const b1 = new Book('Harry Porter', 'J.K. Rowling', 4167, '2021-10-24', true);
-const b2 = new Book('Olympus Heroes', 'Rick Riordan', 3088, '2021-10-25', false);
-const b3 = new Book('How to Swing Trade', 'Brian Pezim' , 322, '2021-10-26', true);
+// const b1 = new Book('Harry Porter', 'J.K. Rowling', 4167, '2021-10-24', true);
+// const b2 = new Book('Olympus Heroes', 'Rick Riordan', 3088, '2021-10-25', false);
+// const b3 = new Book('How to Swing Trade', 'Brian Pezim' , 322, '2021-10-26', true);
 
 // myLibrary = [b1, b2, b3];
 // console.log(myLibrary);

@@ -13,10 +13,10 @@ function addBookToLibrary(title, author, pages, addedDate, isRead) {
   var book = new Book(title, author, pages, addedDate, isRead);
   myLibrary.push(book);
   displayBook(book);
+  populateStorage();
 }
 
 function displayBook(book) {
-  console.log('hi');
   var bookItem = document.createElement('div');
   bookItem.classList.add('bookItem');
 
@@ -33,11 +33,6 @@ function displayBook(book) {
   addedDate.innerHTML = "Added Date: " + book.addedDate;
 
   var isRead = document.createElement('div');
-  // if (book.isRead == true) {
-  //   isRead.innerHTML = "Completed!";
-  // } else {
-  //   isRead.innerHTML = "In Progress...";
-  // }
 
   isRead.innerHTML = (book.isRead) ? "Completed!" : "In Progress...";
   
@@ -81,13 +76,34 @@ function closeForm() {
   document.getElementById('formContainer').style.display = "none";
 }
 
+if(!localStorage.getItem('myLibrary')) {
+  populateStorage();
+  displayLibrary();
+} else {
+  displayLibrary();
+}
+
+function populateStorage() {
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
+function displayLibrary() {
+  var existingLib = JSON.parse(localStorage.getItem("myLibrary"));
+  console.log("existingLib", existingLib);
+
+  existingLib.forEach(function(item) { 
+    addBookToLibrary(item['title'], item['author'], item['pages'], item['addedDate'], item['isRead']);
+  });
+}
+
 //hardcoded books for testing
 const b1 = new Book('Harry Porter', 'J.K. Rowling', 4167, '2021-10-24', true);
 const b2 = new Book('Olympus Heroes', 'Rick Riordan', 3088, '2021-10-25', false);
 const b3 = new Book('How to Swing Trade', 'Brian Pezim' , 322, '2021-10-26', true);
 
-//myLibrary = [b1, b2, b3];
+// myLibrary = [b1, b2, b3];
+// console.log(myLibrary);
 
-displayBook(b1);
-displayBook(b2);
-displayBook(b3);
+// displayBook(b1);
+// displayBook(b2);
+// displayBook(b3);

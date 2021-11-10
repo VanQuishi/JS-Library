@@ -15,16 +15,14 @@ function addBookToLibrary(title, author, pages, addedDate, isRead) {
   var book = new Book(title, author, pages, addedDate, isRead, index);
   myLibrary.push(book);
 
-  //displayBook(book);
+  displayBook(book);
   populateStorage();
 }
 
 function removeBook(index) {
-  console.log(index);
-  console.log(myLibrary);
   myLibrary.splice(index, 1);
-  console.log(myLibrary);
   populateStorage();
+  window.location.reload(true);
 }
 
 function displayBook(book) {
@@ -101,21 +99,21 @@ function displayLibrary() {
   var existingLib = JSON.parse(localStorage.getItem("myLocalLibrary"));
   console.log("existingLib", existingLib);
 
+  myLibrary = [];
   existingLib.forEach(function(item) { 
     addBookToLibrary(item['title'], item['author'], item['pages'], item['addedDate'], item['isRead']);
   });
-
-  myLibrary.forEach(function(book) {
-    displayBook(book);
-  })
 }
 
+//Check if a localStorage item myLibrary exists
 if(!localStorage.getItem('myLibrary')) {
   populateStorage();
-  displayLibrary();
+  // displayLibrary();
 } else {
   displayLibrary();
 }
+
+//localStorage.setItem('myLocalLibrary', JSON.stringify([]));
 
 //hardcoded books for testing
 // const b1 = new Book('Harry Porter', 'J.K. Rowling', 4167, '2021-10-24', true);

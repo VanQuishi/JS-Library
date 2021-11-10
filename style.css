@@ -130,6 +130,12 @@ a {
   color: #E5E7EB;
   font-size: 1rem;
   cursor: pointer;
+  opacity: 0.9;
+}
+
+#addBookBtn:hover {
+  opacity: 1;
+  transition: 0.3s;
 }
 
 .input-footer {
@@ -148,8 +154,13 @@ a {
   position: absolute;
   bottom: 15%;
   right: 5%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px 0 rgba(0 0 0 / 25%);
   border-radius: 50%;
+}
+
+#openFormDiv:hover {
+  box-shadow: 0 5px 10px 0 rgba(0 0 0 / 55%);
+  transition: 0.3s;
 }
 
 #openFormDiv button {
@@ -169,9 +180,9 @@ a {
 .removeBtn {
   background-color: white;
   color: #1F2937;
-  padding: 10px;
+  padding: 0.5rem;
   border: solid 1px #F54552;
-  border-radius: 2px;
+  border-radius: 1rem;
 }
 
 .removeBtn:hover {

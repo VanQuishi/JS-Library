@@ -106,7 +106,7 @@ function displayLibrary() {
 }
 
 //Check if a localStorage item myLibrary exists
-if(!localStorage.getItem('myLibrary')) {
+if(!localStorage.getItem('myLocalLibrary')) {
   populateStorage();
   // displayLibrary();
 } else {

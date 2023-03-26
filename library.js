@@ -1,5 +1,32 @@
 const bookShelf = document.getElementById('bookShelf');
-let myLibrary = [];
+
+class Book {
+  
+  constructor(title, author, pages, addedDate, isRead, index) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.addedDate = addedDate;
+    this.isRead = isRead;
+    this.index = index;
+  }
+}
+
+class Library {
+  constructor() {
+    this.library = new Map();
+  }
+
+  addBookToLibrary = (book) => {
+    this.library.set(book.title, book);
+  }
+
+  removeBook = (book) => {
+    this.library.delete(book.title);
+  }
+
+
+}
 
 function Book(title, author, pages, addedDate, isRead, index) {
   this.title = title;
@@ -104,6 +131,9 @@ function displayLibrary() {
     addBookToLibrary(item['title'], item['author'], item['pages'], item['addedDate'], item['isRead']);
   });
 }
+
+//Create a library obj
+const myLibrary = new Library();
 
 //Check if a localStorage item myLibrary exists
 if(!localStorage.getItem('myLocalLibrary')) {

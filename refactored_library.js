@@ -1,13 +1,12 @@
 const bookShelf = document.getElementById('bookShelf');
 
 class Book {
-  constructor(title, author, pages, addedDate, isRead, index) {
+  constructor(title, author, pages, addedDate, isRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.addedDate = addedDate;
     this.isRead = isRead;
-    this.index = index;
   }
 
   display = () => {
@@ -41,8 +40,8 @@ class Book {
     var removeBtn = document.createElement('button');
     removeBtn.innerHTML = "Remove";
     removeBtn.classList.add('removeBtn');
-    removeBtn.setAttribute('data-book', this.index);
-    removeBtn.setAttribute('onclick', 'removeBook(this.dataset.index);');  //fix this!!!
+    removeBtn.setAttribute('data-index', this.index);
+    removeBtn.setAttribute('onclick', 'removeBook(this.dataset.index);');
 
     bookItem.appendChild(bookCard);
     bookItem.appendChild(bookTitle);
@@ -63,6 +62,7 @@ class Library {
   }
 
   addBook = (book) => {
+    book.index = this.library.length;
     this.library.push(book);
     localStorage.setItem('myLocalLibrary', JSON.stringify(this.library));
   }
@@ -70,8 +70,7 @@ class Library {
   removeBook = (index) => {
     this.library.splice(index, 1);
     localStorage.setItem('myLocalLibrary', JSON.stringify(this.library));
-    /* window.location.reload(true); */
-    setTimeout(window.location.reload(true), 3000);
+    window.location.reload(true);
   }
 }
 
@@ -90,9 +89,7 @@ function getInfoFromBookForm() {
   var addedDate = document.getElementById('addedDate').value;
   var isRead = (document.getElementById('yesOption').checked) ? true : false;
 
-  var index = myLibrary.library.length;
-  console.log({index});
-  var book = new Book(title, author, pages, addedDate, isRead, index);
+  var book = new Book(title, author, pages, addedDate, isRead);
   myLibrary.addBook(book);
   book.display();
 
@@ -118,7 +115,7 @@ if (!localStorage.getItem('myLocalLibrary')) {
   console.log("existingLib", existingLib);
 
   existingLib.forEach(function(item) {
-    let book = new Book(item['title'], item['author'], item['pages'], item['addedDate'], item['isRead'], item['index']);
+    let book = new Book(item['title'], item['author'], item['pages'], item['addedDate'], item['isRead']);
     myLibrary.addBook(book);
   });
   myLibrary.display();
@@ -126,5 +123,9 @@ if (!localStorage.getItem('myLocalLibrary')) {
 
 function removeBook(index) {
   console.log({index});
-  setTimeout(myLibrary.removeBook(index), 5000);
+  myLibrary.removeBook(index);
 }
+
+
+//hack to wipe out library for testing
+//localStorage.setItem('myLocalLibrary', JSON.stringify([]));

@@ -1,6 +1,21 @@
 const bookShelf = document.getElementById('bookShelf');
 let myLibrary = [];
 
+const title = document.getElementById('title');
+const titleError = document.querySelector("#title + span.error");
+const author = document.getElementById('author');
+const pages = document.getElementById('pages');
+const addedDate = document.getElementById('addedDate');
+
+title.addEventListener("input", (event) => {
+  console.log("hi")
+  if (title.validity.valueMissing) {
+    titleError.textContent = "error!";
+  } else {
+    title.setCustomValidity("");
+  }
+});
+
 function Book(title, author, pages, addedDate, isRead, index) {
   this.title = title;
   this.author = author;
@@ -66,13 +81,9 @@ function displayBook(book) {
 }
 
 function getInfoFromBookForm() {
-  var title = document.getElementById('title').value;
-  var author = document.getElementById('author').value;
-  var pages = document.getElementById('pages').value;
-  var addedDate = document.getElementById('addedDate').value;
   var isRead = (document.getElementById('yesOption').checked) ? true : false;
 
-  addBookToLibrary(title, author, pages, addedDate, isRead);
+  addBookToLibrary(title.value, author.value, pages.values, addedDate.value, isRead);
 
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
@@ -84,10 +95,18 @@ function getInfoFromBookForm() {
 }
 
 function openForm() {
+  title.setAttribute('required', '');
+  author.setAttribute('required', '');
+  pages.setAttribute('required', '');
+  addedDate.setAttribute('required', '');
   document.getElementById('formContainer').style.display = "";
 }
 
 function closeForm() {
+  title.removeAttribute('required');
+  author.removeAttribute('required');
+  pages.removeAttribute('required');
+  addedDate.removeAttribute('required');
   document.getElementById('formContainer').style.display = "none";
 }
 

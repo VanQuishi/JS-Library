@@ -20,13 +20,10 @@
   <div class="contentContainer" id="bookContainer">
     <div id="bookShelf">
       
-    </div>  
-    
-    
-    
+    </div>      
   </div>
   <div class="contentContainer" id="formContainer" style="display: none;">
-    <div class="form">
+    <form class="form">
       <div class="form-header">
         <div><b>Add New Book</b></div>
         <div onclick="closeForm();" style="cursor: pointer;">✖</div> 
@@ -34,38 +31,39 @@
       <div class="form-body">
         <div class="input-group">
           <label for="title">Title</label>
-          <input type="text" id="title">
+          <input type="text" id="title" name="title" />
+          <span class="error" aria-live="polite"></span>
         </div>
         <div class="input-group">
           <label for="author">Author</label>
-          <input type="text" id="author">
+          <input type="text" id="author" name="author" />
         </div>
         <div class="input-group">
           <label for="pages">Pages</label>
-          <input type="number" min="1" id="pages">
+          <input type="number" min="1" id="pages" name="pages" />
         </div>
         <div class="input-group">
           <label for="addedDate">Added Date</label>
-          <input type="date" id="addedDate">
+          <input type="date" id="addedDate" name="addedDate" />
         </div>
         <div id="isReadQuestion">
           <label>Have you read this book?</label>
           <div class="input-radio-group">  
             <div class="input-radio">
-              <input type="radio" name="isReadRadios" id="yesOption">
+              <input type="radio" name="isReadRadios" id="yesOption" />
               <label for="yesOption">Yes</label>
             </div>        
             <div class="input-radio">
-              <input type="radio" name="isReadRadios" id="noOption">
+              <input type="radio" name="isReadRadios" id="noOption" checked />
               <label for="noOption">No</label>
             </div>
           </div>         
         </div>
       </div>
       <div class="input-footer">
-        <button id="addBookBtn" onclick="getInfoFromBookForm()">Add</button>
+        <button id="addBookBtn" onclick="getInfoFromBookForm()" type="submit">Add</button>
       </div>
-    </div>
+    </form>
   </div>
   <div id="openFormDiv">
     <button onclick="openForm();" style="cursor: pointer;">+</button>

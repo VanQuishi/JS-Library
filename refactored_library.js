@@ -1,4 +1,18 @@
 const bookShelf = document.getElementById('bookShelf');
+const title = document.getElementById('title');
+const titleError = document.querySelector("#title + span.error");
+const author = document.getElementById('author');
+const pages = document.getElementById('pages');
+const addedDate = document.getElementById('addedDate');
+
+title.addEventListener("input", (event) => {
+  console.log("hi");
+  if (title.validity.valueMissing) {
+    titleError.textContent = "error!";
+  } else {
+    title.setCustomValidity("");
+  }
+});
 
 class Book {
   constructor(title, author, pages, addedDate, isRead) {
@@ -75,21 +89,30 @@ class Library {
 }
 
 function openForm() {
+  title.setAttribute('required', '');
+  author.setAttribute('required', '');
+  pages.setAttribute('required', '');
+  addedDate.setAttribute('required', '');
   document.getElementById('formContainer').style.display = "";
 }
 
 function closeForm() {
+  title.removeAttribute('required');
+  author.removeAttribute('required');
+  pages.removeAttribute('required');
+  addedDate.removeAttribute('required');
   document.getElementById('formContainer').style.display = "none";
 }
 
 function getInfoFromBookForm() {
-  var title = document.getElementById('title').value;
-  var author = document.getElementById('author').value;
-  var pages = document.getElementById('pages').value;
-  var addedDate = document.getElementById('addedDate').value;
   var isRead = (document.getElementById('yesOption').checked) ? true : false;
 
-  var book = new Book(title, author, pages, addedDate, isRead);
+  if (title.value == "" || author.value == "" || pages.value == "" || addedDate.value == "") {
+    alert("Please fill in required fields");
+    return;
+  }
+
+  var book = new Book(title.value, author.value, pages.value, addedDate.value, isRead);
   myLibrary.addBook(book);
   book.display();
 
@@ -102,7 +125,6 @@ function getInfoFromBookForm() {
   document.getElementById('formContainer').style.display = "none";
 }
 
-
 // ------------------------------ main program -------------------------------
 var myLibrary = new Library();;  // create a Library obj
 
@@ -111,6 +133,7 @@ if (!localStorage.getItem('myLocalLibrary')) {
   localStorage.setItem('myLocalLibrary', JSON.stringify(myLibrary.library)); 
 } else {
   // get data from localStorage and add them in myLibrary obj
+  console.log(localStorage.getItem("myLocalLibrary"));
   var existingLib = JSON.parse(localStorage.getItem("myLocalLibrary"));
   console.log("existingLib", existingLib);
 
